@@ -30,6 +30,7 @@ You can use the `-c` options if you want to specify a config file:
 
 Here is a sample config file with the default settings:
 
+    watch:             .
     root:              .
     tmp_path:          ./tmp
     build_name:        runner-build
