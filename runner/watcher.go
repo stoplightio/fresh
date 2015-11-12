@@ -38,12 +38,22 @@ func watchFolder(path string) {
 	}
 }
 
+func skipPath(path string) bool {
+	base := filepath.Base(path)
+
+	if base == "Godeps" || base == "goproxy" || base == "fresh" || base == "server-single" || base == "tmp" {
+		return true
+	}
+
+	return false
+}
+
 func watch() {
 	root := watchDirectory()
 	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err == nil {
 			if info.IsDir() && !isTmpDir(path) {
-				if len(path) > 1 && strings.HasPrefix(filepath.Base(path), ".") {
+				if (len(path) > 1 && strings.HasPrefix(filepath.Base(path), ".")) || skipPath(path) {
 					return filepath.SkipDir
 				}
 
