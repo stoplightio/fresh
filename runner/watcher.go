@@ -41,7 +41,7 @@ func watchFolder(path string) {
 func skipPath(path string) bool {
 	base := filepath.Base(path)
 
-	if base == "Godeps" || base == "goproxy" || base == "fresh" || base == "server-single" || base == "tmp" {
+	if base == "Godeps" || base == "goproxy" || base == "vendor" || base == "fresh" || base == "server-single" || base == "log" || base == "tiedot" || base == "echo" || base == "go-swagger" || base == "tmp" {
 		return true
 	}
 
